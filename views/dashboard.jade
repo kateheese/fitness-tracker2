@@ -1,0 +1,30 @@
+extends layout
+
+block content 
+  include header
+  div.container
+    div.row
+      div.col-md-4
+        h1 Summary
+        h2 Daily Calorie Goal:
+        h1= calories
+        a(href='/fitness/' + user._id + '/edit') edit info
+      div.col-md-4
+        if days
+          div
+            p Select Existing Day to View:
+              for day in days
+                div
+                  a(href='/fitness/' + user._id + '/days/' + day._id)= day.date
+                  form.inline(action='/fitness/' + user._id + '/days/' + day._id + '/delete' method='POST')
+                    input.btn.btn-danger(type="submit", value="Delete")
+      div.col-md-4
+        h1 Add Day
+        form(action='/new-day' method='POST')
+          div.form-group
+            input.form-control(type='date' required name='date' id='date')
+          div.form-group
+            input.btn.btn-primary(type='submit', value='Add')
+
+        
+

@@ -5,4 +5,64 @@ block content
   div.container
     div.row
       div.col-md-4
-        h2= day.date
+        h1= day.date
+        h4 #{calories} - #{foodTotal} + #{exerciseTotal} = #{total}
+        progress(max=max value=foodTotal)
+    div.row
+      div.col-md-6
+        h3 Food
+        if food
+          table.table.table-striped
+            thead
+              tr
+                th Food
+                th Calories
+            tbody
+              for meal in food
+                tr
+                  td= meal.food
+                  td= meal.calories
+                  td
+                    form.delete(action='/fitness/' + user._id + '/days/' + day._id + '/food/' + meal._id + '/delete' method='POST')
+                      input.btn.btn-danger(type="submit" value="Delete")
+      div.col-md-2
+      div.col-md-4
+        h3 Add Food
+        form(action='/fitness/' + user._id + '/days/' + day._id + '/add-food' method='POST')
+          div.form-group
+            label(for='food') Food
+            input.form-control(type='text' name='food' id='food')
+          div.form-group
+            label(for='calories') Calories
+            input.form-control(type='number' name='calories' id='calories')
+          div.form-group
+            input.btn.btn-primary(type='submit', value='Add')
+    div.row
+      div.col-md-6
+        h3 Exercise
+        if exercise
+          table.table.table-striped
+            thead
+              tr
+                th Exercise
+                th Calories
+            tbody
+              for workout in exercise
+                tr
+                  td= workout.exercise
+                  td= workout.calories
+                  td
+                    form.delete(action='/fitness/' + user._id + '/days/' + day._id + '/exercise/' + workout._id + '/delete' method='POST')
+                      input.btn.btn-danger(type="submit" value="Delete")
+      div.col-md-2
+      div.col-md-4
+        h3 Add Exercise
+        form(action='/fitness/' + user._id + '/days/' + day._id + '/add-exercise' method='POST')
+          div.form-group
+            label(for='exercise') Exercise
+            input.form-control(type='text' name='exercise' id='exercise')
+          div.form-group
+            label(for='calories') Calories
+            input.form-control(type='number' name='calories' id='calories')
+          div.form-group
+            input.btn.btn-primary(type='submit', value='Add')
