@@ -8,20 +8,21 @@ block content
         h2 Daily Calorie Goal: #{calories}
         a(href='/fitness/' + user._id + '/edit') edit info
     div.row
-      div.col-md-8
+      div.col-md-6
+        h1 Days
         if days
-          div
-            h1 Days
-              for day in days
-                div
-                  a(href='/fitness/' + user._id + '/days/' + day._id)= day.date
-                  form.inline(action='/fitness/' + user._id + '/days/' + day._id + '/delete' method='POST')
-                    input.btn.btn-danger(type="submit", value="Delete")
+          ul.list-group
+            for day in days
+              li.list-group-item
+                a.date(href='/fitness/' + user._id + '/days/' + day._id)= day.date 
+                form.delete(action='/fitness/' + user._id + '/days/' + day._id + '/delete' method='POST')
+                  input.btn.btn-danger(type="submit", value="Delete")
+      div.col-md-2
       div.col-md-4
         h1 Add Day
-        form(action='fitness/' + user._id + '/new-day' method='POST')
+        form(action='/fitness/' + user._id + '/new-day' method='POST')
           div.form-group
-            input.form-control(type='date' required name='date' id='date')
+            input.form-control(type='date' name='date' id='date')
           div.form-group
             input.btn.btn-primary(type='submit', value='Add')
 

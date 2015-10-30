@@ -29,7 +29,8 @@ router.get('/new', function(req, res) {
 });
 
 router.post('/new', function(req, res) {
-  lookups.addUser().then(function(user) {
+  console.log(req.user)
+  lookups.addUser(req.user.id, req.body.age, req.body.sex, req.body.feet, req.body.inches, req.body.weight, req.body.activity, req.body.goal).then(function(user) {
     res.redirect('/fitness/' + user._id);
   })
 });

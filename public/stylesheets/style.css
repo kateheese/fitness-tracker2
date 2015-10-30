@@ -72,3 +72,11 @@ body {
 .page-header {
   background-color: white;
 }
+
+.date {
+  font-size: 20px;
+}
+
+.delete {
+  float: right;
+}

@@ -19,6 +19,20 @@ router.post('/:id/new-day', function(req, res) {
   lookups.addDay(req.params.id, req.body.date).then(function() {
     res.redirect('/fitness/' + req.params.id);
   })
+});
+
+router.get('/:id/days/:dayId', function(req, res) {
+  lookups.findUser(req.params.id).then(function(user) {
+    lookups.findDay(req.params.dayId).then(function(day) {
+      res.render('fitness/day', { title: day.date, user: user, oauthUser: req.user, day: day });
+    })
+  })
+});
+
+router.post('/:id/days/:dayId/delete', function(req, res) {
+  lookups.deleteDay(req.params.dayId).then(function() {
+    res.redirect('/fitness/' + req.params.id);
+  })
 })
 
 module.exports = router;
