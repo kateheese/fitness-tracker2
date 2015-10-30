@@ -1,0 +1,51 @@
+extends layout
+
+block content
+  include header
+  div.row
+    div.div.well.col-md-4.col-md-offset-4
+      h4 Enter in your stats to get started:
+      if error
+        div.errors.alert.alert-danger(role="alert")
+          p.text-danger= error
+      form(action='/new' method='POST')
+        div.form-group
+          label(for='age') Age
+          input.form-control(type='number' required name='age' id='age')
+        div.form-group
+          label(for='sex') Sex
+          select.form-control(name='sex' id='sex')
+            option(value='' disabled selected) Select
+            option(value='male') Male
+            option(value='female') Female
+        div.form-group
+          label(for='height') Height
+          div.input-group(aria-describedby="basic-addon2")
+            input.form-control(type='number' name='feet' id='height')
+            span.input-group-addon#basic-addon2 ft
+          div.input-group(aria-describedby="basic-addon2")
+            input.form-control(type='number' name='inches')
+            span.input-group-addon#basic-addon2 in
+        div.form-group
+          label(for='weight') Weight
+          div.input-group(aria-describedby="basic-addon2")
+            input.form-control(type='number' name='weight' id='weight')
+            span.input-group-addon#basic-addon2 lbs
+        div.form-group
+          label(for='activity') Average Level of Activity
+          select.form-control(id='activity' name='activity')
+            option(value='' disabled selected) Select
+            option(value='1.2') Sedentary
+            option(value='1.375') Lightly Active
+            option(value='1.55') Moderately Active
+            option(value='1.725') Very Active
+            option(value='1.9') Extra Active
+        div.form-group
+          label(for='goal') Weight Goal
+          select.form-control(id='goal' name='goal')
+            option(value='' disabled selected) Select
+            option(value='lose') Lose Weight
+            option(value='maintain') Maintain Weight
+            option(value='gain') Gain Weight
+        div.form-group
+          input.btn.btn-primary(type='submit', value='Submit')

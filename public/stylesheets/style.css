@@ -1,0 +1,74 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+}
+
+.diamond {
+  width: 100px;
+  height: 100px;
+  margin: 25px;
+  -ms-transform: rotate(-45deg);
+  -webkit-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+  overflow: hidden;
+  border: 1px solid black;
+}
+
+.background {
+  height: 100vh;
+  background-image: url('/images/veggie-background.jpg');
+  background-size: cover;
+}
+
+.nav {
+  color: white;
+}
+
+.link:hover {
+  text-decoration: none;
+}
+
+.home {
+  color: white;
+  margin-bottom: 40px;
+  font-size: 50px;
+}
+
+.button:hover {
+  background-color: white;
+  color: #6D7F8D;
+  text-decoration: none;
+}
+
+.button {
+  display: inline;
+  padding: 10px 20px 10px 20px;
+  border: 3px solid white;
+  margin: 20px;
+  color: white;
+  font-size: 20px;
+}
+
+.center {
+  text-align: center;
+}
+
+.vertical-center {
+  padding-top: 250px;
+}
+
+.signin {
+  margin-top: 80px;
+}
+
+.logo-head {
+  margin-left: 20px;
+  display: inline;
+}
+
+.logo-image {
+  width: 80px;
+}
+
+.page-header {
+  background-color: white;
+}
