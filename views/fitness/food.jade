@@ -1,0 +1,28 @@
+extends ../layout
+
+block content
+  include ../header
+  div.container
+    if results
+      table.table.table-striped
+        tr
+          th Name
+          th Brand
+          th Calories
+          th Fat
+          th Serving Size
+          th
+        for item in results
+            tr
+              td(name="name")= item.fields.item_name
+              td(name="brand")= item.fields.brand_name
+              td(name="calories")= Math.floor(item.fields.nf_calories)
+              td(name="fat")= Math.floor(item.fields.nf_total_fat)
+              td(name="servings")= item.fields.nf_serving_size_qty
+              td
+                form(action='/fitness/' + user._id + '/days/' + dayId + '/add-food' method='POST')
+                  input(type="hidden" name="name" value=item.fields.item_name)
+                  input(type="hidden" name="brand" value=item.fields.brand_name)
+                  input(type="hidden" name="calories" value=Math.floor(item.fields.nf_calories))
+                  input(type="hidden" name="fat" value=Math.floor(item.fields.nf_total_fat))
+                  button.btn.btn-primary(type="submit") Add

@@ -19,6 +19,7 @@
     "passport-facebook": "^2.0.0",
     "passport-google-oauth2": "^0.1.6",
     "passport-instagram": "^1.0.0",
-    "serve-favicon": "~2.3.0"
+    "serve-favicon": "~2.3.0",
+    "unirest": "^0.4.2"
   }
 }

@@ -9,36 +9,52 @@ block content
         h4 #{calories} - #{foodTotal} + #{exerciseTotal} = #{total}
         progress(max=max value=foodTotal)
     div.row
-      div.col-md-6
+      div.col-md-7
         h3 Food
         if food
           table.table.table-striped
             thead
               tr
-                th Food
+                th Name
+                th Brand
                 th Calories
+                th Fat
             tbody
               for meal in food
                 tr
-                  td= meal.food
+                  td= meal.name
+                  td= meal.brand
                   td= meal.calories
+                  td= meal.fat
                   td
                     form.delete(action='/fitness/' + user._id + '/days/' + day._id + '/food/' + meal._id + '/delete' method='POST')
                       input.btn.btn-danger(type="submit" value="Delete")
-      div.col-md-2
-      div.col-md-4
-        h3 Add Food
+      div.col-md-4.col-md-offset-1
+        h3 Search Food
+        form(action='/fitness/' + user._id + '/days/' + day._id method='POST')
+          div.input-group
+            input.form-control(type="text" name='query')
+            span.input-group-btn
+              button.btn.btn-default(type="submit")
+                i.glyphicon.glyphicon-search(aria-hidden="true")
+        h3 Or add your own
         form(action='/fitness/' + user._id + '/days/' + day._id + '/add-food' method='POST')
           div.form-group
-            label(for='food') Food
-            input.form-control(type='text' name='food' id='food')
+            label(for='name') Name
+            input.form-control(type='text' name='name' id='name')
+          div.form-group
+            label(for='brand') Brand
+            input.form-control(type='text' name='brand' id='brand')
           div.form-group
             label(for='calories') Calories
             input.form-control(type='number' name='calories' id='calories')
           div.form-group
+            label(for='fat') Fat
+            input.form-control(type='number' name='fat' id='fat')
+          div.form-group
             input.btn.btn-primary(type='submit', value='Add')
     div.row
-      div.col-md-6
+      div.col-md-7
         h3 Exercise
         if exercise
           table.table.table-striped
@@ -54,8 +70,7 @@ block content
                   td
                     form.delete(action='/fitness/' + user._id + '/days/' + day._id + '/exercise/' + workout._id + '/delete' method='POST')
                       input.btn.btn-danger(type="submit" value="Delete")
-      div.col-md-2
-      div.col-md-4
+      div.col-md-4.col-md-offset-1
         h3 Add Exercise
         form(action='/fitness/' + user._id + '/days/' + day._id + '/add-exercise' method='POST')
           div.form-group

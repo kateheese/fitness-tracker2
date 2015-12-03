@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var unirest = require('unirest');
 var lookups = require('../lib/lookups.js');
 
 router.get('/:id', function(req, res) {
@@ -13,6 +14,65 @@ router.get('/:id', function(req, res) {
         calories: calories });
     })
   })
+});
+
+router.get('/:id/edit', function(req, res) {
+  lookups.findUser(req.params.id).then(function(user) {
+    res.render('fitness/edit', { title: 'Edit', user: user, oauthUser: req.user });
+  })
+});
+
+router.post('/:id/update', function(req, res) {
+  var errors = [];
+  if(!req.body.age.trim()) {
+    errors.push("Age can't be blank");
+  }
+  if(req.body.age.trim() && !/^\d+$/.test(req.body.age)) {
+    errors.push("Age must be a number");
+  }
+  if(req.body.sex == undefined) {
+    errors.push("Please select a sex");
+  }
+  if(!req.body.feet.trim()) {
+    errors.push("Feet can't be blank");
+  }
+  if(req.body.feet.trim() && !/^\d+$/.test(req.body.feet)) {
+    errors.push("Feet must be a number");
+  }
+  if(!req.body.inches.trim()) {
+    errors.push("Inches can't be blank");
+  }
+  if(req.body.inches.trim() && !/^\d+$/.test(req.body.inches)) {
+    errors.push("Inches must be a number");
+  }
+  if(!req.body.weight.trim()) {
+    errors.push("Weight can't be blank");
+  }
+  if(req.body.weight.trim() && !/^\d+$/.test(req.body.weight)) {
+    errors.push("Weight must be a number");
+  }
+  if(req.body.activity == undefined) {
+    errors.push("Please select a level of activity");
+  }
+  if(req.body.goal == undefined) {
+    errors.push("Please select weight goal");
+  }
+  if(errors.length) {
+    res.render('new', { title: 'New User',
+      oauthUser: req.user,
+      errors: errors,
+      age: req.body.age,
+      sex: req.body.sex,
+      feet: req.body.feet,
+      inches: req.body.inches,
+      weight: req.body.weight,
+      activity: req.body.activity,
+      goal: req.body.goal });
+  } else {
+    lookups.editUser(req.params.id, req.body.age, req.body.sex, req.body.feet, req.body.inches, req.body.weight, req.body.activity, req.body.goal).then(function() {
+      res.redirect('/fitness/' + req.params.id);
+    })
+  }
 });
 
 router.post('/:id/new-day', function(req, res) {
@@ -58,9 +118,23 @@ router.post('/:id/days/:dayId/delete', function(req, res) {
   })
 });
 
+router.post('/:id/days/:dayId/search-food', function(req, res) {
+  res.redirect('/fitness/' + req.params.id + '/days/' + req.params.dayId + '/search/' + req.body.query);
+})
+
+router.get('/:id/days/:dayId/search/:query', function(req, res) {
+  lookups.findUser(req.params.id).then(function(user) {
+    unirest.get('https://api.nutritionix.com/v1_1/search/' + lookups.queryFixer(req.params.query) + '?fields=item_name%2Citem_id%2Cbrand_name%2Cnf_calories%2Cnf_total_fat&appId=' + process.env.NUTRITIONIX_ID + '&appKey=' + process.env.NUTRITIONIX_KEY)
+      .end(function (response) {
+        var results = response.body.hits
+          res.render('fitness/food', { title: 'Add Food', user: user, oauthUser: req.user, results: results, dayId: req.params.dayId });
+      });
+  });
+})
+
 router.post('/:id/days/:dayId/add-food', function(req, res) {
   lookups.findDay(req.params.dayId).then(function(day) {
-    lookups.addFood(day._id, req.body.food, req.body.calories).then(function() {
+    lookups.addFood(day._id, req.body.name, req.body.brand, req.body.calories, req.body.fat).then(function() {
       res.redirect('/fitness/' + req.params.id + '/days/' + req.params.dayId);
     })
   })

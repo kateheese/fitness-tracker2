@@ -2,17 +2,6 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
-.diamond {
-  width: 100px;
-  height: 100px;
-  margin: 25px;
-  -ms-transform: rotate(-45deg);
-  -webkit-transform: rotate(-45deg);
-  transform: rotate(-45deg);
-  overflow: hidden;
-  border: 1px solid black;
-}
-
 .background {
   height: 100vh;
   background-image: url('/images/veggie-background.jpg');
@@ -63,6 +52,7 @@ body {
 .logo-head {
   margin-left: 20px;
   display: inline;
+  color: #4ca64c;
 }
 
 .logo-image {
@@ -79,4 +69,25 @@ body {
 
 .delete {
   float: right;
+}
+
+.inline {
+  display: inline-block;
+}
+
+.day-column {
+  margin-top: 30px;
+}
+
+.about {
+  text-align: center;
+}
+
+.about h2 {
+  color: #4ca64c;
+  margin-bottom: 40px;
+}
+
+.icon {
+  height: 70px;
 }
