@@ -1,25 +1,3 @@
-//- div.page-header
-  //- div.container
-  //-   if user
-  //-     a(href='/fitness/' + user._id)
-  //-       img.logo-image(src='/images/icon.png')
-  //-     h1.logo-head Fitness Tracker
-  //-     ul.nav.navbar-nav.navbar-right
-  //-       li
-  //-         a(href='/fitness/' + user._id) #{oauthUser.displayName}
-  //-       li
-  //-         img(src=oauthUser.photos[0].value)
-  //-       li
-  //-         a(href='/signout') Sign Out
-  //-   else
-  //-     a(href='/')
-  //-       img.logo-image(src='/images/icon.png')
-  //-     h1.logo-head Fitness Tracker
-  //-     ul.nav.navbar-nav.navbar-right
-  //-       li
-  //-         a(href='/about') About
-  //-       li
-  //-         a(href='/signin') Sign In
 if user
   nav.navbar.navbar-inverse
     .container-fluid

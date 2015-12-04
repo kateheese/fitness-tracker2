@@ -84,7 +84,7 @@ router.post('/:id/new-day', function(req, res) {
     if(!req.body.date.trim()) {
       errors.push("Please select a date");
     }
-    if(resultsDate) {
+    if(resultsDate.length > 0) {
       errors.push("Date already exists");
     }
     if(errors.length) {
