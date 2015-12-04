@@ -10,8 +10,6 @@ var InstagramStrategy = require('passport-instagram').Strategy;
 var passport = require('passport');
 require('dotenv').load();
 var cookieSession = require('cookie-session');
-var db = require('monk')('localhost/fitness');
-var Users = db.get('users');
 
 passport.use(new GoogleStrategy({
     clientID:     process.env.GOOGLE_CLIENT_ID,
