@@ -37,7 +37,7 @@ if user
           li
             a(href='/fitness/' + user._id) #{oauthUser.displayName}
           li
-            img(src=oauthUser.photos[0].value)
+            img(src=oauthUser.photos[0].value||'/images/profile.png')
           li
             a(href='/signout') Sign Out
 else

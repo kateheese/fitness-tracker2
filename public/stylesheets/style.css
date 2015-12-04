@@ -90,6 +90,7 @@ body {
 
 .navbar {
   padding-bottom: 15px;
+  border-radius: 0;
 }
 
 .navbar-right {
@@ -110,4 +111,25 @@ body {
 
 .cancel {
   padding-left: 10px;
+}
+
+.profile {
+  height: 40px;
+}
+
+progress[value] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 400px;
+  height: 20px;
+}
+
+progress[value]::-webkit-progress-bar {
+  background-color: #eee;
+  border-radius: 2px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset;
+}
+
+progress[value]::-webkit-progress-value {
+  background-color: #325D88;
 }
