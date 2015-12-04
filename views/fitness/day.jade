@@ -31,6 +31,7 @@ block content
                       input.btn.btn-danger(type="submit" value="Delete")
       div.col-md-4.col-md-offset-1
         h3 Search Food
+        include ../errors
         form(action='/fitness/' + user._id + '/days/' + day._id method='POST')
           div.input-group
             input.form-control(type="text" name='query')

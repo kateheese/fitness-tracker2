@@ -13,13 +13,14 @@ block content
         if days
           ul.list-group
             for day in days
-              li.list-group-item
+              li.list-group-item.days
                 a.date(href='/fitness/' + user._id + '/days/' + day._id)= day.date 
                 form.delete(action='/fitness/' + user._id + '/days/' + day._id + '/delete' method='POST')
                   input.btn.btn-danger(type="submit", value="Delete")
       div.col-md-2
       div.col-md-4
         h1 Add Day
+        include ../errors
         form(action='/fitness/' + user._id + '/new-day' method='POST')
           div.form-group
             input.form-control(type='date' name='date' id='date')

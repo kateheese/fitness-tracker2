@@ -1,5 +1,7 @@
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+  background-image: url('/images/veggie-background.jpg');
+  background-size: cover;
 }
 
 .background {
@@ -50,17 +52,11 @@ body {
 }
 
 .logo-head {
-  margin-left: 20px;
-  display: inline;
-  color: #4ca64c;
+  color: white;
 }
 
 .logo-image {
   width: 80px;
-}
-
-.page-header {
-  background-color: white;
 }
 
 .date {
@@ -90,4 +86,28 @@ body {
 
 .icon {
   height: 70px;
+}
+
+.navbar {
+  padding-bottom: 15px;
+}
+
+.navbar-right {
+  padding-top: 35px;
+  padding-right: 35px;
+}
+
+.days {
+  padding-bottom: 40px;
+}
+
+.container {
+  background-color: white;
+  padding: 30px;
+  min-height: 85vh;
+  margin-top: -20px;
+}
+
+.cancel {
+  padding-left: 10px;
 }
