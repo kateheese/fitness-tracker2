@@ -14,7 +14,7 @@ var cookieSession = require('cookie-session');
 passport.use(new GoogleStrategy({
     clientID:     process.env.GOOGLE_CLIENT_ID,
     clientSecret: process.env.GOOGLE_CLIENT_SECRET,
-    callbackURL: "http://127.0.0.1:3000/auth/google/callback",
+    callbackURL: process.env.HOST + "/auth/google/callback",
     passReqToCallback: true
   },
   function(request, accessToken, refreshToken, profile, done) {
@@ -26,7 +26,7 @@ passport.use(new GoogleStrategy({
 passport.use(new FacebookStrategy({
     clientID: process.env.FACEBOOK_APP_ID,
     clientSecret: process.env.FACEBOOK_APP_SECRET,
-    callbackURL: "http://127.0.0.1:3000/auth/facebook/callback",
+    callbackURL: process.env.HOST + "/auth/facebook/callback",
     enableProof: false,
     profileFields: ['id', 'displayName', 'photos']
   },
@@ -39,7 +39,7 @@ passport.use(new FacebookStrategy({
 passport.use(new InstagramStrategy({
     clientID: process.env.INSTAGRAM_CLIENT_ID,
     clientSecret: process.env.INSTAGRAM_CLIENT_SECRET,
-    callbackURL: "http://127.0.0.1:3000/auth/instagram/callback"
+    callbackURL: process.env.HOST + "/auth/instagram/callback"
   },
   function(accessToken, refreshToken, profile, done) {
       profile.identifier=profile.id;
@@ -56,8 +56,7 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
-// uncomment after placing your favicon in /public
-//app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public/images', 'icon.png')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));

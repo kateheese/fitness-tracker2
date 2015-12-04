@@ -4,12 +4,6 @@ body {
   background-size: cover;
 }
 
-.background {
-  height: 100vh;
-  background-image: url('/images/veggie-background.jpg');
-  background-size: cover;
-}
-
 .nav {
   color: white;
 }
@@ -80,7 +74,7 @@ body {
 }
 
 .about h2 {
-  color: #4ca64c;
+  color: #93C54B;
   margin-bottom: 40px;
 }
 

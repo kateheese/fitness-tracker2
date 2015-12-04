@@ -21,5 +21,9 @@
     "passport-instagram": "^1.0.0",
     "serve-favicon": "~2.3.0",
     "unirest": "^0.4.2"
+  },
+  "engines": {
+    "node": "0.12.7",
+    "npm": "2.12.1"
   }
 }

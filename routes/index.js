@@ -3,7 +3,7 @@ var router = express.Router();
 var lookups = require('../lib/lookups.js');
 
 router.get('/', function(req, res) {
-  res.render('index', { title: 'Title' });
+  res.render('index', { title: 'Fitness Tracker' });
 });
 
 router.get('/about', function(req, res) {
