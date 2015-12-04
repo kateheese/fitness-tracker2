@@ -18,14 +18,14 @@ block content
                 th Name
                 th Brand
                 th Calories
-                th Fat
+                th#hide Fat
             tbody
               for meal in food
                 tr
                   td= meal.name
                   td= meal.brand
                   td= meal.calories
-                  td= meal.fat
+                  td#hide= meal.fat
                   td
                     form.delete(action='/fitness/' + user._id + '/days/' + day._id + '/food/' + meal._id + '/delete' method='POST')
                       input.btn.btn-danger(type="submit" value="Delete")
