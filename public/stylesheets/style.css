@@ -1,7 +1,13 @@
+html {
+  height: 100%;
+}
+
 body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
   background-image: url('/images/veggie-background.jpg');
   background-size: cover;
+  background-repeat: no-repeat;
+  background-height: 100%;
 }
 
 .link:hover {
@@ -43,15 +49,15 @@ body {
 
 .logo-head {
   color: white;
-  margin-left: 35%;
+  margin-left: 2em;
 }
 
 .logo-image {
-  width: 80px;
+  height: 2.5em;
 }
 
 .date {
-  font-size: 20px;
+  font-size: 1.5em;
 }
 
 .delete {
@@ -80,13 +86,13 @@ body {
 }
 
 .navbar {
-  padding-bottom: 15px;
   border-radius: 0;
+  padding-bottom: 1em;
 }
 
 .navbar-right {
-  padding-top: 35px;
-  padding-right: 35px;
+  padding-top: 1em;
+  padding-right: 2em;
 }
 
 .days {
@@ -96,8 +102,12 @@ body {
 .container {
   background-color: white;
   padding: 40px;
-  min-height: 85vh;
+  min-height: 84vh;
   margin-top: -20px;
+}
+
+.about-container {
+  min-height: 89vh;
 }
 
 .cancel {
@@ -126,34 +136,15 @@ progress[value]::-webkit-progress-value {
 }
 
 @media only screen and (max-device-width: 800px) {
-  html {
-    height: 100%;
-  }
-  body {
-    background-image: url('/images/veggie-background.jpg');
-    background-repeat: no-repeat;
-    background-height: 100%;
-  }
-
   #hide {
     display: none;
   }
 }
 
 @media only screen and (max-device-width: 400px) {
-  html {
-    height: 100%;
-  }
-  body {
-    background-image: url('/images/veggie-background.jpg');
-    background-repeat: no-repeat;
-    background-height: 100%;
-  }
-
   .container {
     font-size: 80%;
   }
-
   .small {
     padding: 30%;
   }
