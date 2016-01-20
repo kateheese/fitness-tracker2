@@ -20,7 +20,7 @@ body {
 }
 
 .about-container {
-  min-height: 89vh;
+  height: 89vh;
 }
 
 .about-sections > div {
